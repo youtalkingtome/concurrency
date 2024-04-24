@@ -16,9 +16,9 @@ public class CustomerCollector {
                 StringBuilder::toString // finisher
         );
 
-        List<String> strings = Arrays.asList("Java", "Streams", "API");
+        List<String> strings = Arrays.asList("My ", "Customer", "Collector");
         String result = strings.stream().collect(joiningWithDelimiter);
-        System.out.println(result); // Outputs: Java,Streams,API,
+        System.out.println(result);
 
     }
 }

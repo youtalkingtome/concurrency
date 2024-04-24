@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class PairSumFinderEfficient {
     public static void main(String[] args) {
-        int[] array = {10, 3, 4, 5, 6, 7}; // Example array
+        int[] array = {11, 4, 9, 8, 2, 7,3}; // Example array
         findPairs(array);
     }
 
