@@ -7,7 +7,7 @@ public class Anagram {
 
     public static boolean checkAnagramCount(String word1, String word2) {
         // Remove any white space and convert strings to lowercase
-        word1= word1.replaceAll("\\s", "").toLowerCase();
+        word1 = word1.replaceAll("\\s", "").toLowerCase();
         word2 = word2.replaceAll("\\s", "").toLowerCase();
 
         // Check if lengths are equal
@@ -31,13 +31,14 @@ public class Anagram {
             charCountsMap.put(c, count - 1);
         }
 
-        charCountsMap.forEach((K,V)->{                 // mapofmaps entries
+        charCountsMap.forEach((K, V) -> {                 // mapofmaps entries
             // inner Hashmap enteries
-                System.out.println(K+" "+V);       // print key and value of inner Hashmap
+            System.out.println(K + " " + V);       // print key and value of inner Hashmap
 
         });
         return true;
     }
+
     public static boolean checkAnagram(String word1, String word2) {
         //removing spaces and converting to lower case
 
@@ -68,8 +69,9 @@ public class Anagram {
 
         return true;
     }
+
     public static void main(String[] args) {
-        System.out.println(checkAnagram("listen", "silent"));
+        System.out.println(checkAnagramCount("listen", "silent"));
 
 
     }
