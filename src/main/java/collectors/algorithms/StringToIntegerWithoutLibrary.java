@@ -1,55 +1,44 @@
 package collectors.algorithms;
 
 public class StringToIntegerWithoutLibrary {
-    public static int stringToInteger(String str) {
-        int intValue = 0;
-        boolean isNegative = false;
-        int i = 0;
-
-        // Check if the string is empty
-        if (str == null || str.isEmpty()) {
-            throw new IllegalArgumentException("String is empty");
+    public static int stringToInteger(String s) {
+        s = s.trim();
+        if (s.isEmpty()) {
+            return 0;
         }
 
-        // Check for leading whitespace
-        while (i < str.length() && Character.isWhitespace(str.charAt(i))) {
+        int ans = 0, i = 0;
+        boolean neg = s.charAt(0) == '-';
+        boolean pos = s.charAt(0) == '+';
+
+        if (neg || pos) {
             i++;
         }
 
-        // Check for sign
-        if (i < str.length() && (str.charAt(i) == '+' || str.charAt(i) == '-')) {
-            isNegative = (str.charAt(i) == '-');
-            i++;
-        }
+        while (i < s.length() && Character.isDigit(s.charAt(i))) {
+            int digit = s.charAt(i) - '0';
 
-        // Convert each character to integer
-        while (i < str.length()) {
-            char ch = str.charAt(i);
-            if (ch >= '0' && ch <= '9') {
-                intValue = intValue * 10 + (ch - '0');
-            } else {
-                // If non-digit character is encountered, break the loop
-                break;
+            if (ans > Integer.MAX_VALUE / 10 || (ans == Integer.MAX_VALUE / 10 && digit > Integer.MAX_VALUE % 10)) {
+                return neg ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             }
+
+            ans = ans * 10 + digit;
             i++;
         }
 
-        // Apply sign
-        if (isNegative) {
-            intValue = -intValue;
-        }
-
-        return intValue;
+        return neg ? -ans : ans;
     }
 
+
+
     public static void main(String[] args) {
-        String str = "12345";
+        String str = "-042";
         System.out.println("String to integer: " + stringToInteger(str));
 
-        String negativeStr = "-9876";
+        String negativeStr = "337c0d3";
         System.out.println("String to integer (negative): " + stringToInteger(negativeStr));
 
-        String invalidStr = "abc";
+        String invalidStr = "1337c0d3";
         try {
             System.out.println("String to integer (invalid): " + stringToInteger(invalidStr));
         } catch (IllegalArgumentException e) {
