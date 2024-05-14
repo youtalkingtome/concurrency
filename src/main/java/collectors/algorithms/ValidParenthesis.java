@@ -6,7 +6,7 @@ public class ValidParenthesis {
 
     public static void main(String[] args) {
 
-        String string= "{()}";
+        String string= "(]";
         Stack<Character> charStack=new Stack<>();
         for (char ch : string.toCharArray())
         {

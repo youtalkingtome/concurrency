@@ -27,7 +27,13 @@ public class StockBuySellMaxProfit {
     // Example usage
     public static void main(String[] args) {
         int[] prices = {7, 1, 5, 3, 7, 7};
-        System.out.println("Maximum Profit: " + maxProfit(prices));
+        System.out.println(maxProfit(new int[] {})); // Expected 0
+        System.out.println(maxProfit(null)); // Expected 0
+        System.out.println(maxProfit(new int[] {5})); // Expected 0
+        System.out.println(maxProfit(new int[] {5, 5, 5, 5})); // Expected 0
+        System.out.println(maxProfit(new int[] {9, 6, 4, 2})); // Expected 0
+        System.out.println(maxProfit(new int[] {1, 2, 3, 4})); // Expected 3
+        System.out.println(maxProfit(new int[] {7, 1, 5, 3, 6, 4})); // Expected 5
 
 
     }

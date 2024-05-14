@@ -16,7 +16,7 @@ public class RemoveElement {
         RemoveElement remover = new RemoveElement();
 
         // Example usage:
-        int[] nums = {3, 2, 2, 3, 4, 5, 3};
+        int[] nums = {3, 2, 3};
         int val = 3;
         System.out.println("Original Array:");
         for (int num : nums) {
