@@ -7,7 +7,7 @@ public class TwoSumSolveAgain {
 
     public static void main(String[] args) {
 
-        int[] array = {2,7,11,15,8,1};
+        int[] array = {2,7,11,15,8,1,4,5,6,9};
         int target = 12;
         boolean found =  false;
 
