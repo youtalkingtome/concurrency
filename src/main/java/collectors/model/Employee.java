@@ -14,5 +14,6 @@ public class Employee {
     private String name;
     private Department department;
     private BigDecimal salary;
+    private BigDecimal loanAmount;
 
 }
