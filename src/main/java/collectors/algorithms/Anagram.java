@@ -5,6 +5,29 @@ import java.util.Map;
 
 public class Anagram {
 
+    public static boolean testAnagram(String word1, String word2) {
+
+        if(word1.length() != word2.length())
+        {
+            return false;
+        }
+        Map<Character, Integer> charCountMap= new HashMap<>();
+
+        for(Character ch :word1.toCharArray())
+        {
+         charCountMap.put(ch, charCountMap.getOrDefault(ch, 0)+1);
+        }
+        for(Character ch:word2.toCharArray())
+        {
+            if(charCountMap.getOrDefault(ch, 0)==0)
+            {
+                return false;
+            }
+            charCountMap.put(ch, charCountMap.getOrDefault(ch, 0)-1);
+        }
+        return true;
+    }
+
     public static boolean checkAnagramCount(String word1, String word2) {
         // Remove any white space and convert strings to lowercase
         word1 = word1.replaceAll("\\s", "").toLowerCase();
@@ -71,7 +94,7 @@ public class Anagram {
     }
 
     public static void main(String[] args) {
-        System.out.println(checkAnagramCount("listen", "silent"));
+        System.out.println(testAnagram("listen", "silent"));
 
 
     }

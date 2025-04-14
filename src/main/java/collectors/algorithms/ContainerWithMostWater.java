@@ -21,6 +21,28 @@ public class ContainerWithMostWater {
         return maxArea;
     }
 
+    public static int mostWater(int[] height) {
+        int maxWater = 0;
+        int left = 0;
+        int right = height.length - 1;
+        while (left < right) {
+            int width = right - left;
+            int h = Math.min(height[left], height[right]);
+            int water = width * h;
+            maxWater = Math.max(water, maxWater);
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+
+        }
+        return maxWater;
+
+
+    }
+
+
     public static int maxAreaBruteForce(int[] height) {
         int maxArea = 0;
 
@@ -37,6 +59,6 @@ public class ContainerWithMostWater {
 
     public static void main(String[] args) {
         int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-        System.out.println(maxAreaBruteForce(height)); // Output: 49
+        System.out.println(mostWater(height)); // Output: 49
     }
 }

@@ -17,5 +17,6 @@ public class StockBuySell {
             }
 
         }
+        System.out.println(maxProfit);
     }
 }

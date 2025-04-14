@@ -39,6 +39,34 @@ public class LongestNonRepeatingString {
         return maxSubstringLength;
     }
 
+    public static int lengthOfLongestSubstringBS(String s) {
+        Map<Character, Integer> currentCharMap = new HashMap<>();
+        int maxSubstringLength = 0;
+        for ( int start =0, end =0 ; end <s.length(); end ++)
+        {
+            char currentChar=s.charAt((end));
+            if(currentCharMap.containsKey(currentChar))
+            {
+                start =Math.max(currentCharMap.get(currentChar)+1, start);
+            }
+            currentCharMap.put(currentChar, end);
+            maxSubstringLength = Math.max(maxSubstringLength, end-start+1);
+        }
+
+        for (int start = 0, end = 0; end < s.length(); end++) {
+            char currentChar = s.charAt(end);
+
+            if (currentCharMap.containsKey(currentChar)) {
+                start = Math.max(currentCharMap.get(currentChar) + 1, start);
+            }
+
+            currentCharMap.put(currentChar, end);
+            maxSubstringLength = Math.max(maxSubstringLength, end - start + 1);
+        }
+
+        return maxSubstringLength;
+    }
+
     public static void main(String[] args) {
         String exampleString = "abcabcebba";
         System.out.println("Length of the longest substring: " + lengthOfLongestSubstring(exampleString));
