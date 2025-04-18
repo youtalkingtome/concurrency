@@ -16,4 +16,6 @@ public class Employee {
     private BigDecimal salary;
     private BigDecimal loanAmount;
 
+    public Employee(String ravi, Department commercial, BigDecimal bigDecimal) {
+    }
 }
