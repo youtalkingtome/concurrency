@@ -17,12 +17,19 @@ public class CollectorsOpearations {
 
         List<String> words = Arrays.asList("cat", "dog", "lion", "tiger", "goat", "ant");
 
+        //Count of each word
+        words.stream().collect(Collectors.groupingBy(String::length,Collectors.counting()));
         Map<Integer, Long> result = words.stream()
                 .collect(Collectors.groupingBy(String::length, Collectors.counting()));
         System.out.println(result);
 
         //Group names by first character and sort them
         List<String> names = Arrays.asList("Alice", "Andy", "Bob", "Ben", "Charlie");
+
+        var sortAndGroup =names.stream().collect(Collectors.groupingBy(name -> name.charAt(0), Collectors.collectingAndThen(Collectors.toList(),
+                list -> list.stream().sorted().collect(Collectors.toList()))));
+
+        System.out.println(sortAndGroup);
 
         Map<Character, List<String>> grouped = names.stream()
                 .collect(Collectors.groupingBy(
@@ -42,6 +49,7 @@ public class CollectorsOpearations {
                 new Employee("Charlie", "IT", 70000),
                 new Employee("David", "IT", 65000)
         );
+
 
         Map<String, Employee> highestPaid = employees.stream()
                 .collect(Collectors.groupingBy(
