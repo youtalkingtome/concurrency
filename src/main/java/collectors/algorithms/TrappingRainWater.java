@@ -2,6 +2,9 @@ package collectors.algorithms;
 
 public class TrappingRainWater {
     public static int trap(int[] height) {
+
+
+        // min(leftmax,rightMax) -height[i]
         int n = height.length;
         int[] leftMax = new int[n];
         int[] rightMax = new int[n];

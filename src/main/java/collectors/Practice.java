@@ -11,6 +11,7 @@ import java.time.ZoneId;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Practice {
@@ -55,6 +56,24 @@ public class Practice {
                 .findFirst();
 
         System.out.println("Problem 49" +result);
+
+        String input1 = "programming";
+
+        var map = input1.chars() // stream of int
+                .mapToObj(c -> (char) c) // convert to Character
+                .filter(Character::isLetter) // optional: only letters
+                .map(Character::toLowerCase) // ignore case
+                .collect(Collectors.groupingBy(
+                        Function.identity(), Collectors.counting()));
+
+        System.out.println("Problem 49" +result);
+
+
+                /*.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() > 1) // keep duplicates
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toSet());*/
 
 
         // Group strings by length
@@ -246,6 +265,55 @@ public class Practice {
                                 .sum()))
                 .sorted(Map.Entry.<String, Double>comparingByValue(Comparator.reverseOrder()))
                 .collect(Collectors.toList());
+
+
+        //Merging two Arrays:
+        int[] arr1 = {1, 3, 5};
+        int[] arr2 = {2, 4, 6};
+
+        int[] merged = Arrays.stream(new int[][]{arr1, arr2})
+                .flatMapToInt(Arrays::stream)
+                .toArray();
+
+        System.out.println(Arrays.toString(merged));
+        //Extract all Digits from the Strings.
+
+        List<String> lines = List.of("Room 101", "Level 42B", "3rd floor");
+        IntStream digits = lines.stream()
+                .flatMapToInt(line ->
+                        line.chars()            // IntStream of code points
+                                .filter(Character::isDigit));
+        System.out.println(digits.summaryStatistics());
+
+
+        String s= "I am learning Java I";
+        List<String> tokenList = Arrays.stream(s.split(" ")).collect(Collectors.toList());
+
+        Arrays.stream(s.split(" ")).max(Comparator.comparing(String::length));
+
+        var resultOne=  Arrays.stream(s.split(" ")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        resultOne.entrySet().stream()
+                .forEach(entry -> System.out.println(entry.getKey() + " = " + entry.getValue()));
+        var wordMap =Arrays.stream(s.split(" ")).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new, Collectors.counting()));
+
+        long maxLength = resultOne.values().stream()
+                .max(Comparator.naturalOrder())
+                .orElse(0L);
+
+        System.out.println("maxiumm length" +maxLength);
+
+        // Remove duplicates from the string and return in the same order
+        String duplicates ="dabdfg";
+        duplicates.chars().distinct().mapToObj(x ->(char)x).forEach(System.out::println);
+
+        //Suppose, if we want to total all the salaries of Female employees we can do it as below.
+
+        //03 Find the word that has the second highest length
+        Arrays.stream(s.split(" ")).sorted(Comparator.comparing(String::length).reversed()).skip(1).findFirst().get();
+        //Given a sentence, find the occurrence of each word
+
+
     }
 
     @Getter
@@ -258,6 +326,7 @@ public class Practice {
         private BigDecimal salary;
         private LocalDate joiningDate;
         private String age;
+        public enum Sex { MALE, FEMALE }
     }
     static class Product {
         String name;
