@@ -313,6 +313,31 @@ public class Practice {
         Arrays.stream(s.split(" ")).sorted(Comparator.comparing(String::length).reversed()).skip(1).findFirst().get();
         //Given a sentence, find the occurrence of each word
 
+        List<Integer> list = Arrays.asList(2, 5, 1, 9, 6);
+        list.stream().max(Integer::compare).get();
+        list.stream().min(Integer::compare).get();
+
+        int secondHighest = list.stream().sorted(Comparator.reverseOrder())
+                .distinct()
+                .skip(1)
+                .findFirst()
+                .orElseThrow();
+        int secondLowest = list.stream()
+                .sorted()
+                .distinct()
+                .skip(1)
+                .findFirst()
+                .orElseThrow();
+        list.stream().filter(n -> n/2==0).collect(Collectors.toList());
+
+        Set<Integer> seen = new HashSet<>();
+        Set<Integer> duplicateSet = list.stream()
+                .filter(x -> !seen.add(x))
+                .collect(Collectors.toSet());
+        List<String> names = Arrays.asList("John", "Paul", "Tom", "Jerry");
+        names.stream().collect(Collectors.groupingBy(String::length));
+
+
 
     }
 
